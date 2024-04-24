@@ -1,0 +1,55 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package GameGunny;
+
+import GameGunny.Object;
+
+/**
+ *
+ * @author phamn
+ */
+public class BulletManager extends ObjectManager {
+
+    public BulletManager(Object gameWorld) {
+        super(gameWorld);
+    }
+    public void updateBullets() {
+    synchronized(particularObjects){
+        for(int id = 0; id < particularObjects.size(); id++){
+            Object object = particularObjects.get(id);
+            if(object instanceof Bullet) {
+                Bullet bullet = (Bullet) object;
+                bullet.Update(); // Cập nhật vị trí của viên đạn
+            }
+        }
+    }
+}
+    public void moveBullets() {
+    synchronized (particularObjects) {
+        for (Object object : particularObjects) {
+            if (object instanceof Bullet) {
+                Bullet bullet = (Bullet) object;
+                bullet.move(); // Cập nhật vị trí của viên đạn
+            }
+        }
+    }
+}
+    @Override
+    public void UpdateObjects() {
+    super.UpdateObjects();
+    moveBullets(); // Cập nhật vị trí của các viên đạn
+    synchronized (particularObjects) {
+        for (int id = 0; id < particularObjects.size(); id++) {
+            Object object = particularObjects.get(id);
+            if (object.getState() == Object.DEATH) {
+                particularObjects.remove(id);
+            }
+        }
+    }
+}
+    
+    
+    
+}

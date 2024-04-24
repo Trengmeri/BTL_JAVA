@@ -8,7 +8,7 @@ public class Chapter2 extends JPanel {
     private int padding_top = 70;
 
     public Chapter2() {
-        loadImage("image/bgr.png"); // Load hình ảnh nền cho bảng
+        loadImage("D:\\Kunny_1\\Kunny_1\\src\\main\\java\\image\\bgr.png"); // Load hình ảnh nền cho bảng
         
      // Đặt padding cho JPanel Shop
         setBorder(BorderFactory.createEmptyBorder(padding_top, padding, padding, padding));
@@ -52,7 +52,7 @@ public class Chapter2 extends JPanel {
         titleLabel.setForeground(Color.YELLOW); // Thiết lập màu văn bản
         
         // Thiết lập hình nền cho nhãn văn bản
-        ImageIcon labelBackground = new ImageIcon("image/nhãn.png");
+        ImageIcon labelBackground = new ImageIcon("D:\\Kunny_1\\Kunny_1\\src\\main\\java\\image\\nhãn.png");
         titleLabel.setIcon(labelBackground);
         titleLabel.setHorizontalTextPosition(SwingConstants.CENTER); // Căn văn bản vào giữa theo chiều ngang
         titleLabel.setVerticalTextPosition(SwingConstants.CENTER); // Căn văn bản vào giữa theo chiều dọc
@@ -72,9 +72,9 @@ public class Chapter2 extends JPanel {
         JButton button3 = new JButton();
         
         // Thiết lập hình ảnh cho từng nút
-        ImageIcon icon1 = new ImageIcon("image/dễ.png");
-        ImageIcon icon2 = new ImageIcon("image/trung bình.png");
-        ImageIcon icon3 = new ImageIcon("image/khó.png");
+        ImageIcon icon1 = new ImageIcon("D:\\Kunny_1\\Kunny_1\\src\\main\\java\\image\\dễ.png");
+        ImageIcon icon2 = new ImageIcon("D:\\Kunny_1\\Kunny_1\\src\\main\\java\\image\\trung bình.png");
+        ImageIcon icon3 = new ImageIcon("D:\\Kunny_1\\Kunny_1\\src\\main\\java\\image\\khó.png");
         
         button1.setIcon(icon1);
         button2.setIcon(icon2);

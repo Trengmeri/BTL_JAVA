@@ -8,7 +8,7 @@ public class GameInterface extends JPanel {
     private int padding_top = 70;
 
     public GameInterface() {
-        loadImage("image/bgr.png"); // Load hình ảnh nền cho bảng
+        loadImage("image\\bgr.png"); // Load hình ảnh nền cho bảng
         
      // Đặt padding cho JPanel Shop
         setBorder(BorderFactory.createEmptyBorder(padding_top, padding, padding, padding));
@@ -52,7 +52,7 @@ public class GameInterface extends JPanel {
         titleLabel.setForeground(Color.YELLOW); // Thiết lập màu văn bản
         
         // Thiết lập hình nền cho nhãn văn bản
-        ImageIcon labelBackground = new ImageIcon("image/nhãn.png");
+        ImageIcon labelBackground = new ImageIcon("image\\nhãn.png");
         titleLabel.setIcon(labelBackground);
         titleLabel.setHorizontalTextPosition(SwingConstants.CENTER); // Căn văn bản vào giữa theo chiều ngang
         titleLabel.setVerticalTextPosition(SwingConstants.CENTER); // Căn văn bản vào giữa theo chiều dọc
@@ -72,9 +72,9 @@ public class GameInterface extends JPanel {
         JButton button3 = new JButton();
         
         // Thiết lập hình ảnh cho từng nút
-        ImageIcon icon1 = new ImageIcon("image/chapter/1.png");
-        ImageIcon icon2 = new ImageIcon("image/chapter/2.png");
-        ImageIcon icon3 = new ImageIcon("image/chapter/3.png");
+        ImageIcon icon1 = new ImageIcon("image\\chapter\\1.png");
+        ImageIcon icon2 = new ImageIcon("image\\chapter\\2.png");
+        ImageIcon icon3 = new ImageIcon("image\\chapter\\3.png");
         
         button1.setIcon(icon1);
         button2.setIcon(icon2);
@@ -93,16 +93,27 @@ public class GameInterface extends JPanel {
         button3.setContentAreaFilled(false);
         button3.setBorderPainted(false);
         
-		/*
-		 * button1.addActionListener(e -> { Chapter1 chapter1 = new Chapter1();
-		 * chapter1.displayChapterInterface(); });
-		 * 
-		 * button2.addActionListener(e -> { Chapter2 chapter2 = new Chapter2();
-		 * chapter2.displayChapterInterface(); });
-		 * 
-		 * button3.addActionListener(e -> { Chapter3 chapter3 = new Chapter3();
-		 * chapter3.displayChapterInterface(); });
-		 */
+        button1.addActionListener(e -> {
+            SwingUtilities.invokeLater(() -> {
+                JFrame gameFrame = new DoHoaOKM(); // Tạo một thể hiện mới của DoHoaOKM
+                gameFrame.setVisible(true); // Hiển thị cửa sổ trò chơi
+            });
+        });
+
+        
+        button2.addActionListener(e -> {
+        	SwingUtilities.invokeLater(() -> {
+                JFrame gameFrame = new DoHoaGC(); // Tạo một thể hiện mới của DoHoaOKM
+                gameFrame.setVisible(true); // Hiển thị cửa sổ trò chơi
+            });
+        });
+        
+        button3.addActionListener(e -> {
+        	SwingUtilities.invokeLater(() -> {
+                JFrame gameFrame = new DoHoaTTK(); // Tạo một thể hiện mới của DoHoaOKM
+                gameFrame.setVisible(true); // Hiển thị cửa sổ trò chơi
+            });
+        });
         
         // Thêm các nút vào giao diện
         GridBagConstraints gbc = new GridBagConstraints();
@@ -125,6 +136,15 @@ public class GameInterface extends JPanel {
         if (backgroundImage != null) {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         }
+    }
+    
+    public void displayGameInterface() {
+        JFrame chapterFrame = new JFrame("GameInterface"); // Thay X bằng số của chapter tương ứng
+        chapterFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Đóng frame khi đóng giao diện chapter
+        chapterFrame.getContentPane().add(this); // Sử dụng instance của chapter hiện tại làm giao diện
+        chapterFrame.pack();
+        chapterFrame.setLocationRelativeTo(null);
+        chapterFrame.setVisible(true);
     }
 
     public static void main(String[] args) {

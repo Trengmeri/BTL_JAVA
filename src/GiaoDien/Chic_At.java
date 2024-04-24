@@ -1,0 +1,83 @@
+package GiaoDien;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import javax.swing.*;
+
+public class Chic_At extends JPanel {
+    private BufferedImage spriteSheet;
+    private int currentFrame = 0;
+    private int frameWidth, frameHeight;
+    private int numFrames = 4; // Số lượng khung hình trong sprite sheet
+    private int frameDelay = 15; // Độ trễ giữa các khung hình (milliseconds)
+    private long lastFrameTime;
+    private int x;
+    private int y;
+
+    public void setX(int x) {
+    this.x = x;
+    }
+    public void setY(int y) {
+    this.y = y;
+    }
+    private BufferedImage scaledSpriteSheet;
+    private int scaledFrameWidth, scaledFrameHeight;
+    
+    public Chic_At() {
+        // Load sprite sheet
+        ImageIcon icon = new ImageIcon("image\\boss + map\\cứu gà con\\chic_at.png");
+        spriteSheet = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+        spriteSheet.getGraphics().drawImage(icon.getImage(), 0, 0, null);
+
+        // Set frame width and height (assuming all frames are of same size)
+        frameWidth = spriteSheet.getWidth() / numFrames;
+        frameHeight = spriteSheet.getHeight();
+        
+        // Set preferred size of the panel based on frame size
+        setPreferredSize(new Dimension(frameWidth, frameHeight));
+        scaleSpriteSheet();
+        
+        // Start animation timer
+        lastFrameTime = System.currentTimeMillis();
+        Timer timer = new Timer(16, e -> {
+            long currentTime = System.currentTimeMillis();
+            if (currentTime - lastFrameTime >= frameDelay) {
+                currentFrame = (currentFrame + 1) % numFrames;
+                repaint();
+                lastFrameTime = currentTime;
+            }
+        });
+        timer.start();
+    }
+
+    private void scaleSpriteSheet() {
+        // Tạo một bản sao thu nhỏ của sprite sheet
+        scaledFrameWidth = frameWidth / 2; // Giảm chiều rộng của khung hình
+        scaledFrameHeight = frameHeight / 2; // Giảm chiều cao của khung hình
+        scaledSpriteSheet = new BufferedImage(scaledFrameWidth * numFrames, scaledFrameHeight, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = scaledSpriteSheet.createGraphics();
+        for (int i = 0; i < numFrames; i++) {
+            g2d.drawImage(spriteSheet.getSubimage(i * frameWidth, 0, frameWidth, frameHeight).getScaledInstance(scaledFrameWidth, scaledFrameHeight, Image.SCALE_SMOOTH), i * scaledFrameWidth, 0, null);
+        }
+        g2d.dispose();
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        // Vẽ animation với kích thước mới
+        g.drawImage(scaledSpriteSheet.getSubimage(currentFrame * scaledFrameWidth, 0, scaledFrameWidth, scaledFrameHeight), x, y, null);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Sprite Animation Example");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.add(new Chic_At());
+            frame.pack();
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        });
+    }
+}
+

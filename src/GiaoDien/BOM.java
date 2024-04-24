@@ -1,3 +1,4 @@
+
 package GiaoDien;
 
 import java.awt.*;
@@ -24,7 +25,7 @@ public class BOM extends JPanel {
     private int scaledFrameWidth, scaledFrameHeight;
     public BOM() {
         // Load sprite sheet
-        ImageIcon icon = new ImageIcon("image\\weapon\\BOM.png");
+        ImageIcon icon = new ImageIcon("D:\\Kunny_1gg\\Kunny_1\\Kunny_1\\src\\main\\java\\animation\\weapon\\BOM.png");
         spriteSheet = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
         spriteSheet.getGraphics().drawImage(icon.getImage(), 0, 0, null);
 
@@ -41,12 +42,15 @@ public class BOM extends JPanel {
         Timer timer = new Timer(16, e -> {
             long currentTime = System.currentTimeMillis();
             if (currentTime - lastFrameTime >= frameDelay) {
+                
                 currentFrame = (currentFrame + 1) % numFrames;
                 repaint();
                 lastFrameTime = currentTime;
             }
         });
         timer.start();
+        playBackgroundMusic();
+
     }
     
     private void scaleSpriteSheet() {
@@ -60,7 +64,15 @@ public class BOM extends JPanel {
         }
         g2d.dispose();
     }
-
+    private static  void playBackgroundMusic() {
+    String soundFilePath = "D:\\Kunny_1gg\\101 (online-audio-converter.com).wav"; // Thay đổi đường dẫn tương ứng với tệp nhạc của bạn
+    try {
+        SoundPlayer.playSound(soundFilePath);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    System.out.println("File nhac chay");
+    }
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -68,15 +80,16 @@ public class BOM extends JPanel {
         g.drawImage(scaledSpriteSheet.getSubimage(currentFrame * scaledFrameWidth, 0, scaledFrameWidth, scaledFrameHeight), x, y, null);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Sprite Animation Example");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.add(new BOM());
-            frame.pack();
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-        });
-    }
+//    public static void main(String[] args) {
+//        SwingUtilities.invokeLater(() -> {
+//            playBackgroundMusic();
+//            JFrame frame = new JFrame("Sprite Animation Example");
+//            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//            frame.add(new BOM());
+//            frame.pack();
+//            frame.setLocationRelativeTo(null);
+//            frame.setVisible(true);
+//        });
+//    }
 }
 

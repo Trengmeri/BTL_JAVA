@@ -93,20 +93,16 @@ public class GameInterface extends JPanel {
         button3.setContentAreaFilled(false);
         button3.setBorderPainted(false);
         
-        button1.addActionListener(e -> {
-            Chapter1 chapter1 = new Chapter1();
-            chapter1.displayChapterInterface();
-        });
-        
-        button2.addActionListener(e -> {
-            Chapter2 chapter2 = new Chapter2();
-            chapter2.displayChapterInterface();
-        });
-        
-        button3.addActionListener(e -> {
-            Chapter3 chapter3 = new Chapter3();
-            chapter3.displayChapterInterface();
-        });
+		/*
+		 * button1.addActionListener(e -> { Chapter1 chapter1 = new Chapter1();
+		 * chapter1.displayChapterInterface(); });
+		 * 
+		 * button2.addActionListener(e -> { Chapter2 chapter2 = new Chapter2();
+		 * chapter2.displayChapterInterface(); });
+		 * 
+		 * button3.addActionListener(e -> { Chapter3 chapter3 = new Chapter3();
+		 * chapter3.displayChapterInterface(); });
+		 */
         
         // Thêm các nút vào giao diện
         GridBagConstraints gbc = new GridBagConstraints();

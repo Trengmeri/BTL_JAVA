@@ -18,6 +18,10 @@ public final class DoHoaTTK extends JFrame implements KeyListener {
     private stand upright;
     private stand_left upleft;
     private slime_at Slime_At;
+    private int currentFrame = 0;
+    private int numFrames = 5; // Số lượng khung hình trong sprite sheet
+    private int frameDelay = 100; // Độ trễ giữa các khung hình (milliseconds)
+    private long lastFrameTime;
     
     Player player = new Player(100,600,null,null,this);
     BulletManager bulletmanager = new BulletManager(player);
@@ -93,6 +97,17 @@ public final class DoHoaTTK extends JFrame implements KeyListener {
         add(panel);
         // Hiển thị cửa sổ
         setVisible(true);   
+     // Start animation timer
+        lastFrameTime = System.currentTimeMillis();
+        Timer timer = new Timer(16, e -> {
+            long currentTime = System.currentTimeMillis();
+            if (currentTime - lastFrameTime >= frameDelay) {
+                currentFrame = (currentFrame + 1) % numFrames;
+                repaint();
+                lastFrameTime = currentTime;
+            }
+        });
+        timer.start();
     }
     public void Update(){
         player.Update();

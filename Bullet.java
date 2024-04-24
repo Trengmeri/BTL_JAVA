@@ -20,8 +20,8 @@ import java.awt.Color;
 
         private int damage;
 
-        public Bullet(double speedx, double speedy, int width, int height,int damage, double posX, double posY, DoHoaOKM o) {
-            super(posX, posY, o);
+        public Bullet(double speedx, double speedy, int width, int height,int damage, double posX, double posY, DoHoaOKM o1,DoHoaGC o2,DoHoaTTK o3) {
+            super(posX, posY, o1,o2,o3);
             this.speedx = speedx;
             this.speedy = speedy;
             this.width = width;

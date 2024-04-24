@@ -13,7 +13,7 @@ public class DoHoaOKM extends JFrame implements KeyListener {
     private Image bossImageOKM;
     private Image vongngam;
     
-    Player player = new Player(100,600,this);
+    Player player = new Player(100,600,this,null,null);
     BulletManager bulletmanager = new BulletManager(player);
     Boss boss = new Boss(1240, 560); // Khởi tạo đối tượng boss
     AngleBar bar = new AngleBar(); // Khởi tạo vòng chọn góc
@@ -26,14 +26,14 @@ public class DoHoaOKM extends JFrame implements KeyListener {
         
         try {
             // Load ảnh
-            backGroundOKM = new ImageIcon("D:\\Kunny_1\\Kunny_1\\src\\main\\java\\imagesOKM\\backGroundOKM.jpg").getImage();
-            DiaHinhOKM = new ImageIcon("D:\\Kunny_1\\Kunny_1\\src\\main\\java\\imagesOKM\\DiaHinhOKM.png").getImage();
-            DaoTrenKhongOKM = new ImageIcon("D:\\Kunny_1\\Kunny_1\\src\\main\\java\\imagesOKM\\DaoTrenKhongOKM.png").getImage();
-            TenMapOKM = new ImageIcon("D:\\Kunny_1\\Kunny_1\\src\\main\\java\\imagesOKM\\TenMapOKM.png").getImage();
-            playerImageOKM = new ImageIcon("D:\\Kunny_1\\Kunny_1\\src\\main\\java\\imagesOKM\\BoyOKM.png").getImage(); 
-            playerDeadImageOKM = new ImageIcon("D:\\Kunny_1\\Kunny_1\\src\\main\\java\\imagesOKM\\P_DIE.png").getImage();
-            bossImageOKM = new ImageIcon("D:\\Kunny_1\\Kunny_1\\src\\main\\java\\imagesOKM\\BossOKM.png").getImage(); 
-            vongngam = new ImageIcon("D:\\Kunny_1\\Kunny_1\\src\\main\\java\\imagesGaCon\\VongTronNgam.png").getImage(); 
+            backGroundOKM = new ImageIcon("D:\\Kunny_1gg\\Kunny_1\\Kunny_1\\src\\main\\java\\imagesOKM\\backGroundOKM.jpg").getImage();
+            DiaHinhOKM = new ImageIcon("D:\\Kunny_1gg\\Kunny_1\\Kunny_1\\src\\main\\java\\imagesOKM\\DiaHinhOKM.png").getImage();
+            DaoTrenKhongOKM = new ImageIcon("D:\\Kunny_1gg\\Kunny_1\\Kunny_1\\src\\main\\java\\imagesOKM\\DaoTrenKhongOKM.png").getImage();
+            TenMapOKM = new ImageIcon("D:\\Kunny_1gg\\Kunny_1\\Kunny_1\\src\\main\\java\\imagesOKM\\TenMapOKM.png").getImage();
+            playerImageOKM = new ImageIcon("D:\\Kunny_1gg\\Kunny_1\\Kunny_1\\src\\main\\java\\imagesOKM\\BoyOKM.png").getImage(); 
+            playerDeadImageOKM = new ImageIcon("D:\\Kunny_1gg\\Kunny_1\\Kunny_1\\src\\main\\java\\imagesOKM\\P_DIE.png").getImage();
+            bossImageOKM = new ImageIcon("D:\\Kunny_1gg\\Kunny_1\\Kunny_1\\src\\main\\java\\imagesOKM\\BossOKM.png").getImage(); 
+            vongngam = new ImageIcon("D:\\Kunny_1gg\\Kunny_1\\Kunny_1\\src\\main\\java\\imagesOKM\\VongTronNgam.png").getImage(); 
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error loading images: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -254,4 +254,3 @@ public class DoHoaOKM extends JFrame implements KeyListener {
         });
     }
 }
-

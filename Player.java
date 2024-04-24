@@ -27,11 +27,13 @@ public class Player extends Object {
     private BulletManager bullManager;
 
     // Constructor
-    public Player(double px, double py,DoHoaOKM ob) {
-        super(px,py,ob);
+    public Player(double px, double py,DoHoaOKM o1,DoHoaGC o2,DoHoaTTK o3) {
+        super(px,py,o1,o2,o3);
         this.playerX = px;
         this.playerY = py;
-        this.o = ob;      
+        this.o1 = o1;
+        this.o2 = o2;
+        this.o3 = o3;
         this.angle = 45;
         this.power = 0;
         this.playerHealthBarX = (int)playerX + 30;
@@ -92,7 +94,7 @@ public class Player extends Object {
    
     
     double timeofFlight =  power / 10;
-    Bullet bullet = new Bullet(100, 20, 10, 10, 10, getPlayerX() ,  getPlayerY(),  getO());   
+    Bullet bullet = new Bullet(100, 20, 10, 10, 10, getPlayerX() ,  getPlayerY(),  getO1(),getO2(),getO3());   
     
         bullet.setPosX(getPlayerX() + bullet.getSpeedx()*timeofFlight);
         bullet.setPosY(getPlayerY() - bullet.getPosX()/(Math.tan(Math.toRadians(angle-80))));

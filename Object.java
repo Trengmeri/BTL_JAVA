@@ -4,6 +4,8 @@
  */
 package GiaoDien;
 import GiaoDien.DoHoaOKM;
+import GiaoDien.DoHoaGC;
+import GiaoDien.DoHoaTTK;
 import java.awt.Graphics2D;
 
 /**
@@ -13,7 +15,9 @@ import java.awt.Graphics2D;
 public abstract class Object {
     private double posX ;
     private double posY ;
-    DoHoaOKM o;
+    DoHoaOKM o1;
+    DoHoaGC o2;
+    DoHoaTTK o3;
     public static final int ALIVE = 0;
     public static final int BEHURT = 1;
     public static final int FEY = 2;
@@ -23,10 +27,12 @@ public abstract class Object {
     private boolean alive = true;
     
 
-    public Object(double posX, double posY, DoHoaOKM o) {
+    public Object(double posX, double posY, DoHoaOKM o1,DoHoaGC o2, DoHoaTTK o3) {
         this.posX = posX;
         this.posY = posY;
-        this.o = o;
+        this.o1 = o1;
+        this.o2 = o2;
+        this.o3 = o3;
     }
     public int getState() {
         return state;
@@ -58,12 +64,28 @@ public abstract class Object {
         this.posY = posY;
     }
 
-    public DoHoaOKM getO() {
-        return o;
+    public DoHoaOKM getO1() {
+        return o1;
     }
 
-    public void setO(DoHoaOKM o) {
-        this.o = o;
+    public void setO1(DoHoaOKM o1) {
+        this.o1 = o1;
+    }
+
+    public DoHoaGC getO2() {
+        return o2;
+    }
+
+    public void setO2(DoHoaGC o2) {
+        this.o2 = o2;
+    }
+
+    public DoHoaTTK getO3() {
+        return o3;
+    }
+
+    public void setO3(DoHoaTTK o3) {
+        this.o3 = o3;
     }
     public abstract void Update();
 

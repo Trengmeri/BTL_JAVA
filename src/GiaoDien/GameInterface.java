@@ -1,14 +1,14 @@
+
 package GiaoDien;
 import javax.swing.*;
 import java.awt.*;
-
 public class GameInterface extends JPanel {
     private Image backgroundImage;
     private int padding = 20; // Đặt giá trị của padding
     private int padding_top = 70;
 
     public GameInterface() {
-        loadImage("image\\bgr.png"); // Load hình ảnh nền cho bảng
+        loadImage("D:\\Kunny_1gg\\Kunny_1\\Kunny_1\\src\\main\\image\\chapter\\bgr.png"); // Load hình ảnh nền cho bảng
         
      // Đặt padding cho JPanel Shop
         setBorder(BorderFactory.createEmptyBorder(padding_top, padding, padding, padding));
@@ -52,7 +52,7 @@ public class GameInterface extends JPanel {
         titleLabel.setForeground(Color.YELLOW); // Thiết lập màu văn bản
         
         // Thiết lập hình nền cho nhãn văn bản
-        ImageIcon labelBackground = new ImageIcon("image\\nhãn.png");
+        ImageIcon labelBackground = new ImageIcon("D:\\Kunny_1gg\\Kunny_1\\Kunny_1\\src\\main\\image\\chapter\\nhãn.png");
         titleLabel.setIcon(labelBackground);
         titleLabel.setHorizontalTextPosition(SwingConstants.CENTER); // Căn văn bản vào giữa theo chiều ngang
         titleLabel.setVerticalTextPosition(SwingConstants.CENTER); // Căn văn bản vào giữa theo chiều dọc
@@ -72,9 +72,9 @@ public class GameInterface extends JPanel {
         JButton button3 = new JButton();
         
         // Thiết lập hình ảnh cho từng nút
-        ImageIcon icon1 = new ImageIcon("image\\chapter\\1.png");
-        ImageIcon icon2 = new ImageIcon("image\\chapter\\2.png");
-        ImageIcon icon3 = new ImageIcon("image\\chapter\\3.png");
+        ImageIcon icon1 = new ImageIcon("D:\\Kunny_1gg\\Kunny_1\\Kunny_1\\src\\main\\image\\chapter\\1.png");
+        ImageIcon icon2 = new ImageIcon("D:\\Kunny_1gg\\Kunny_1\\Kunny_1\\src\\main\\image\\chapter\\2.png");
+        ImageIcon icon3 = new ImageIcon("D:\\Kunny_1gg\\Kunny_1\\Kunny_1\\src\\main\\image\\chapter\\3.png");
         
         button1.setIcon(icon1);
         button2.setIcon(icon2);
@@ -137,18 +137,28 @@ public class GameInterface extends JPanel {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         }
     }
-    
-    public void displayGameInterface() {
-        JFrame chapterFrame = new JFrame("GameInterface"); // Thay X bằng số của chapter tương ứng
-        chapterFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Đóng frame khi đóng giao diện chapter
-        chapterFrame.getContentPane().add(this); // Sử dụng instance của chapter hiện tại làm giao diện
-        chapterFrame.pack();
-        chapterFrame.setLocationRelativeTo(null);
-        chapterFrame.setVisible(true);
+    private static  void playBackgroundMusic() {
+    String soundFilePath = "D:\\Kunny_1gg\\zhenying1 (online-audio-converter.com).wav"; // Thay đổi đường dẫn tương ứng với tệp nhạc của bạn
+    try {
+        SoundPlayer.playSound(soundFilePath);
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+    System.out.println("File nhac chay");
+}
+//    public void displayGameInterface() {
+//        JFrame chapterFrame = new JFrame("GameInterface"); // Thay X bằng số của chapter tương ứng
+//        chapterFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Đóng frame khi đóng giao diện chapter
+//        chapterFrame.getContentPane().add(this); // Sử dụng instance của chapter hiện tại làm giao diện
+//        chapterFrame.pack();
+//        chapterFrame.setLocationRelativeTo(null);
+//        chapterFrame.setVisible(true);
+//        
+//    }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
+            playBackgroundMusic();
             JFrame frame = new JFrame("Game Interface");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.getContentPane().add(new GameInterface());
